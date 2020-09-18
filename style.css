@@ -1,3 +1,6 @@
+body {
+    background-color: rgb(75, 1, 177);
+}
 .color {
     border: 1px solid black;
     height: 50px;
