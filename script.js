@@ -25,14 +25,13 @@ function boardmaker() {
     let boardref = document.querySelector("#pixel-board");
     let boardWidth = boardsize * 40;
     let boardHeight = boardsize * 40;
-
     if (boardsize > 60) {
         alert("numero maximo é 60");
-        boardsize = 5;
+        document.querySelector("#board-size").value = 5;
     } else {
         if (boardsize < 0) {
             alert("numero minimo é 0");
-            boardsize = 5;
+            document.querySelector("#board-size").value = 5;
         } else {
             boardref.innerHTML = ""
             boardref.style.height = boardHeight + "px";
