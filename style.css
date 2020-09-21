@@ -30,7 +30,7 @@ body {
 
 #pixel-board {
     display: flex;
-    background-color: blue;
+    background-color: white;
     height: 200px;
     width: 200px;
     flex-flow: row wrap;

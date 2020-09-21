@@ -1,3 +1,5 @@
+boardmaker();
+
 document.querySelectorAll(".color")[0].classList.add("selected");
 document.querySelector("#clear-board").addEventListener("click", function() {
     document.querySelectorAll('.pixel').forEach(item => {
@@ -16,10 +18,30 @@ document.querySelectorAll('.color').forEach(item => {
     })
 })
 
-document.querySelectorAll('.pixel').forEach(item => {
-    item.addEventListener('click', event => {
-        let elementSelected = document.querySelector(".selected");
-        let elementWithCssProp = window.getComputedStyle(elementSelected, null).getPropertyValue("background-color");
-        item.style.backgroundColor = elementWithCssProp;
+document.querySelector("#board-size-button").addEventListener("click", boardmaker)
+
+function boardmaker() {
+    let boardsize = document.querySelector("#board-size").value;
+    let boardref = document.querySelector("#pixel-board");
+    let boardWidth = boardsize * 40;
+    let boardHeight = boardsize * 40;
+    boardref.innerHTML = ""
+    boardref.style.height = boardHeight + "px";
+    boardref.style.width = boardWidth + "px";
+    for (nPixels = 0; nPixels < boardsize * boardsize; nPixels += 1) {
+        let pixel = document.createElement("div");
+        pixel.classList.add("pixel");
+        boardref.appendChild(pixel);
+    }
+    pixelmaker();
+}
+
+function pixelmaker() {
+    document.querySelectorAll('.pixel').forEach(item => {
+        item.addEventListener('click', event => {
+            let elementSelected = document.querySelector(".selected");
+            let elementWithCssProp = window.getComputedStyle(elementSelected, null).getPropertyValue("background-color");
+            item.style.backgroundColor = elementWithCssProp;
+        })
     })
-})
+}
