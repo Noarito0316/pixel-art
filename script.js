@@ -25,15 +25,26 @@ function boardmaker() {
     let boardref = document.querySelector("#pixel-board");
     let boardWidth = boardsize * 40;
     let boardHeight = boardsize * 40;
-    boardref.innerHTML = ""
-    boardref.style.height = boardHeight + "px";
-    boardref.style.width = boardWidth + "px";
-    for (nPixels = 0; nPixels < boardsize * boardsize; nPixels += 1) {
-        let pixel = document.createElement("div");
-        pixel.classList.add("pixel");
-        boardref.appendChild(pixel);
+
+    if (boardsize > 60) {
+        alert("numero maximo é 60");
+        boardsize = 5;
+    } else {
+        if (boardsize < 0) {
+            alert("numero minimo é 0");
+            boardsize = 5;
+        } else {
+            boardref.innerHTML = ""
+            boardref.style.height = boardHeight + "px";
+            boardref.style.width = boardWidth + "px";
+            for (nPixels = 0; nPixels < boardsize * boardsize; nPixels += 1) {
+                let pixel = document.createElement("div");
+                pixel.classList.add("pixel");
+                boardref.appendChild(pixel);
+            }
+            pixelmaker();
+        }
     }
-    pixelmaker();
 }
 
 function pixelmaker() {
